@@ -1,0 +1,245 @@
+/* =========================================
+   VARIABLES Y CONFIGURACIÓN GLOBAL
+   ========================================= */
+:root {
+    --bg-color: #0d1117;
+    --card-bg: #161b22;
+    --accent-cyan: #00f2ff;
+    --text-color: #e6edf3;
+    --german-gold: #ffd700;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* =========================================
+   ESTRUCTURA BENTO (GRILLA)
+   ========================================= */
+.bento-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 900px;
+    padding: 20px;
+}
+
+.bento-item {
+    background: var(--card-bg);
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 25px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.bento-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
+}
+
+h1, h3 { 
+    color: var(--accent-cyan); 
+    margin-top: 10px; 
+}
+
+/* =========================================
+   HOME PAGE: PERFIL
+   ========================================= */
+.profile-box { 
+    grid-column: span 2; 
+    text-align: center; 
+}
+
+.profile-img img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 4px solid var(--accent-cyan);
+    object-fit: cover;
+    
+    /* Centra la cara subiendo la imagen un 20% */
+    object-position: center 20%; 
+    
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.profile-img img:hover {
+    transform: scale(1.1);
+}
+
+/* =========================================
+   PERSONAL INFO: TEXTO Y LISTAS
+   ========================================= */
+.bento-item.content-top {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.justified-text {
+    text-align: justify;
+    line-height: 1.6;
+}
+
+.justified-text p {
+    margin-bottom: 20px;
+}
+
+/* Viñetas personalizadas para Hobbies */
+.custom-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 20px;
+}
+
+.custom-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+.custom-list li::before {
+    content: "•";
+    color: var(--accent-cyan);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+/* =========================================
+   PERSONAL INFO: IMÁGENES
+   ========================================= */
+.info-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.bento-img-small {
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: 15px;
+    border: 1px solid rgba(0, 242, 255, 0.3);
+    align-self: center; /* Siempre centradas */
+}
+
+/* act_1 (Vertical estándar) */
+.vertical-img {
+    width: 30%; 
+}
+
+/* act_2 (Horizontal) */
+.horizontal-img {
+    width: 75%; 
+}
+
+/* act_3 (Vertical pero más grande que act_1) */
+.act3-large {
+    width: 45%; 
+}
+
+/* =========================================
+   SCHEDULE: TABLA Y COLORES
+   ========================================= */
+.schedule-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 95%;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+.page-title {
+    color: var(--accent-cyan);
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    border: 1px solid #30363d;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--card-bg);
+}
+
+th, td {
+    border: 1px solid #30363d;
+    padding: 12px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+th {
+    background-color: #21262d;
+    color: var(--accent-cyan);
+}
+
+.time-col {
+    background-color: #0d1117;
+    color: #8b949e;
+    font-weight: bold;
+}
+
+/* Colores de Actividades */
+.class-block { background-color: rgba(0, 242, 255, 0.1); color: #fff; }
+.service-block { background-color: rgba(255, 255, 255, 0.05); color: #8b949e; font-style: italic; }
+.gym-block { background-color: rgba(46, 160, 67, 0.2); color: #7ee787; }
+.german-block { background-color: rgba(255, 204, 0, 0.25) !important; color: var(--german-gold); }
+.box-night-block { 
+    background-color: rgba(239, 68, 68, 0.25); 
+    color: #fca5a5; 
+    animation: glow 1s infinite alternate; 
+}
+
+@keyframes glow {
+    from { box-shadow: 0 0 5px rgba(239, 68, 68, 0.2); }
+    to { box-shadow: 0 0 15px rgba(239, 68, 68, 0.5); }
+}
+
+.weekend-relax-block { background-color: rgba(139, 148, 158, 0.1); color: #8b949e; }
+
+/* =========================================
+   NAVEGACIÓN (BOTONES)
+   ========================================= */
+.nav-box {
+    grid-column: span 2;
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+    width: 100%;
+}
+
+.btn {
+    text-decoration: none;
+    color: var(--text-color);
+    background: #21262d;
+    padding: 12px 25px;
+    border-radius: 8px;
+    border: 1px solid #30363d;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: var(--accent-cyan);
+    color: var(--bg-color);
+}
