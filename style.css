@@ -1,6 +1,12 @@
 /* =========================================
-   VARIABLES Y CONFIGURACIÓN GLOBAL
+   RESET Y CONFIGURACIÓN GLOBAL
    ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Fundamental para que nada se salga de su cuadro */
+}
+
 :root {
     --bg-color: #0d1117;
     --card-bg: #161b22;
@@ -17,7 +23,6 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    margin: 0;
 }
 
 /* =========================================
@@ -27,6 +32,7 @@ body {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
+    width: 100%;
     max-width: 900px;
     padding: 20px;
 }
@@ -36,6 +42,7 @@ body {
     border: 1px solid #30363d;
     border-radius: 12px;
     padding: 25px;
+    width: 100%; /* Asegura que respete el contenedor */
     transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
@@ -64,10 +71,7 @@ h1, h3 {
     border-radius: 50%;
     border: 4px solid var(--accent-cyan);
     object-fit: cover;
-    
-    /* Centra la cara subiendo la imagen un 20% */
     object-position: center 20%; 
-    
     box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
     transition: transform 0.3s ease;
 }
@@ -77,28 +81,23 @@ h1, h3 {
 }
 
 /* =========================================
-   PERSONAL INFO: TEXTO Y LISTAS
+   TEXTO JUSTIFICADO
    ========================================= */
-.bento-item.content-top {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-}
-
 .justified-text {
     text-align: justify;
     line-height: 1.6;
+    hyphens: auto; /* Corta palabras con guiones en pantallas estrechas */
+    word-break: break-word;
 }
 
 .justified-text p {
     margin-bottom: 20px;
 }
 
-/* Viñetas personalizadas para Hobbies */
+/* Listas */
 .custom-list {
     list-style-type: none;
-    padding-left: 0;
+    padding: 0;
     margin-bottom: 20px;
 }
 
@@ -106,6 +105,7 @@ h1, h3 {
     position: relative;
     padding-left: 20px;
     margin-bottom: 15px;
+    text-align: justify;
 }
 
 .custom-list li::before {
@@ -129,94 +129,13 @@ h1, h3 {
     height: auto;
     object-fit: cover;
     border-radius: 8px;
-    margin-top: 15px;
     border: 1px solid rgba(0, 242, 255, 0.3);
-    align-self: center; /* Siempre centradas */
+    align-self: center;
 }
 
-/* act_1 (Vertical estándar) */
-.vertical-img {
-    width: 30%; 
-}
-
-/* act_2 (Horizontal) */
-.horizontal-img {
-    width: 75%; 
-}
-
-/* act_3 (Vertical pero más grande que act_1) */
-.act3-large {
-    width: 45%; 
-}
-
-/* =========================================
-   SCHEDULE: TABLA Y COLORES
-   ========================================= */
-.schedule-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 95%;
-    max-width: 1200px;
-    padding: 20px;
-}
-
-.page-title {
-    color: var(--accent-cyan);
-    margin-bottom: 25px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-.table-wrapper {
-    width: 100%;
-    overflow-x: auto;
-    border-radius: 12px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    border: 1px solid #30363d;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: var(--card-bg);
-}
-
-th, td {
-    border: 1px solid #30363d;
-    padding: 12px;
-    text-align: center;
-    font-size: 0.9rem;
-}
-
-th {
-    background-color: #21262d;
-    color: var(--accent-cyan);
-}
-
-.time-col {
-    background-color: #0d1117;
-    color: #8b949e;
-    font-weight: bold;
-}
-
-/* Colores de Actividades */
-.class-block { background-color: rgba(0, 242, 255, 0.1); color: #fff; }
-.service-block { background-color: rgba(255, 255, 255, 0.05); color: #8b949e; font-style: italic; }
-.gym-block { background-color: rgba(46, 160, 67, 0.2); color: #7ee787; }
-.german-block { background-color: rgba(255, 204, 0, 0.25) !important; color: var(--german-gold); }
-.box-night-block { 
-    background-color: rgba(239, 68, 68, 0.25); 
-    color: #fca5a5; 
-    animation: glow 1s infinite alternate; 
-}
-
-@keyframes glow {
-    from { box-shadow: 0 0 5px rgba(239, 68, 68, 0.2); }
-    to { box-shadow: 0 0 15px rgba(239, 68, 68, 0.5); }
-}
-
-.weekend-relax-block { background-color: rgba(139, 148, 158, 0.1); color: #8b949e; }
+.vertical-img { width: 30%; margin-top: 15px; }
+.horizontal-img { width: 75%; margin-top: 35px; }
+.act3-large { width: 50%; margin-top: 20px; }
 
 /* =========================================
    NAVEGACIÓN (BOTONES)
@@ -233,70 +152,118 @@ th {
     text-decoration: none;
     color: var(--text-color);
     background: #21262d;
-    padding: 12px 25px;
+    padding: 12px 20px;
     border-radius: 8px;
     border: 1px solid #30363d;
     transition: 0.3s;
+    text-align: center;
+    font-size: 0.9rem;
+    display: inline-block;
+    max-width: 100%;
 }
 
-.btn:hover {
-    background: var(--accent-cyan);
-    color: var(--bg-color);
+.btn:hover { background: var(--accent-cyan); color: var(--bg-color); font-weight: bold; }
+
+/* =========================================
+   SCHEDULE: TABLA Y COLORES (RESTAURADO)
+   ========================================= */
+.schedule-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 95%;
+    max-width: 1200px;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    border: 1px solid #30363d;
+}
+
+table { width: 100%; border-collapse: collapse; background-color: var(--card-bg); color: var(--text-color); }
+th, td { border: 1px solid #30363d; padding: 12px; text-align: center; font-size: 0.9rem; }
+th { background-color: #21262d; color: var(--accent-cyan); font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+
+/* Columna de Hora */
+.time-col { background-color: #0d1117; color: #8b949e; font-weight: bold; white-space: nowrap; }
+
+/* Colores por tipo de actividad */
+.class-block { background-color: rgba(0, 242, 255, 0.1); color: #fff; font-weight: 500; }
+.class-block:hover { background-color: rgba(0, 242, 255, 0.25); cursor: pointer; }
+.service-block { background-color: rgba(255, 255, 255, 0.05); color: #8b949e; font-style: italic; font-size: 0.85rem; }
+.gym-block { background-color: rgba(46, 160, 67, 0.2); color: #7ee787; font-weight: bold; }
+.german-block { background-color: rgba(255, 204, 0, 0.25) !important; color: var(--german-gold); font-weight: bold; border: 1px solid rgba(255, 215, 0, 0.3); }
+.weekend-relax-block { background-color: rgba(139, 148, 158, 0.1); color: #8b949e; font-style: italic; vertical-align: middle; }
+.free-block { background-color: rgba(255, 255, 255, 0.02); }
+
+/* Boxeo - Efecto Glow */
+.box-night-block { 
+    background-color: rgba(239, 68, 68, 0.25); 
+    color: #fca5a5; 
+    font-weight: bold;
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    animation: glow 1s infinite alternate; 
+}
+
+@keyframes glow {
+    from { box-shadow: 0 0 5px rgba(239, 68, 68, 0.2); }
+    to { box-shadow: 0 0 15px rgba(239, 68, 68, 0.5); }
 }
 
 /* =========================================
-   DISEÑO RESPONSIVO (MÓVIL Y TABLET)
+   DISEÑO RESPONSIVO (TABLET Y MÓVIL)
    ========================================= */
 @media (max-width: 768px) {
     .bento-container {
-        grid-template-columns: 1fr;
-        padding: 10px;
+        grid-template-columns: 1fr; /* Una sola columna para todo */
+        padding: 15px;
+        gap: 15px;
+        width: 100%;
     }
 
-    .profile-box, .nav-box {
+    .profile-box, .nav-box, .bento-item {
         grid-column: span 1;
+        width: 100%; /* Fuerza a que todos los cuadros midan lo mismo */
+    }
+
+    /* Justificación mejorada para pantallas pequeñas */
+    .justified-text {
+        text-align: justify;
+        text-justify: inter-word;
     }
 
     .nav-box {
-        flex-direction: column;
-        gap: 10px;
+        flex-direction: column; /* Botones en lista vertical */
+        align-items: center;
     }
 
     .btn {
-        width: 100%;
-        text-align: center;
-        box-sizing: border-box;
-    }
-
-    /* Imágenes más grandes en móvil para que no pierdan detalle */
-    .vertical-img {
-        width: 60%;
-    }
-
-    .act3-large {
-        width: 85%;
-    }
-
-    .horizontal-img {
-        width: 100%;
+        width: 100%; /* Ocupan todo el ancho del cuadro pero sin salirse */
+        padding: 15px;
     }
 
     .profile-img img {
-        width: 140px;
-        height: 140px;
+        width: 150px;
+        height: 150px;
     }
 
-    h1 {
-        font-size: 1.5rem;
-    }
+    /* Ajuste de imágenes para que no se vean gigantes */
+    .vertical-img { width: 60%; }
+    .act3-large { width: 85%; }
+    .horizontal-img { width: 100%; }
 }
 
 @media (max-width: 600px) {
-    .table-wrapper {
-        font-size: 0.8rem;
-    }
-    
-    th, td {
-        padding: 8px 4px;
-    }
+    /* Ajustes extra para que la tabla quepa en pantallas muy chicas */
+    .table-wrapper { font-size: 0.8rem; }
+    th, td { padding: 8px 4px; font-size: 0.8rem; }
+}
+
+@media (max-width: 480px) {
+    .bento-item { padding: 15px; }
 }
