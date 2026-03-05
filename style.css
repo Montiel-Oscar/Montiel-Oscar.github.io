@@ -243,3 +243,60 @@ th {
     background: var(--accent-cyan);
     color: var(--bg-color);
 }
+
+/* =========================================
+   DISEÑO RESPONSIVO (MÓVIL Y TABLET)
+   ========================================= */
+@media (max-width: 768px) {
+    .bento-container {
+        grid-template-columns: 1fr;
+        padding: 10px;
+    }
+
+    .profile-box, .nav-box {
+        grid-column: span 1;
+    }
+
+    .nav-box {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    /* Imágenes más grandes en móvil para que no pierdan detalle */
+    .vertical-img {
+        width: 60%;
+    }
+
+    .act3-large {
+        width: 85%;
+    }
+
+    .horizontal-img {
+        width: 100%;
+    }
+
+    .profile-img img {
+        width: 140px;
+        height: 140px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .table-wrapper {
+        font-size: 0.8rem;
+    }
+    
+    th, td {
+        padding: 8px 4px;
+    }
+}
